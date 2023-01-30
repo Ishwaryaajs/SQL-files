@@ -1,0 +1,113 @@
+CREATE DATABASE IVMNS1;
+USE IVMNS1;
+
+CREATE TABLE Users1
+(
+UserId int primary key identity(1,1),
+UserName varchar(50),
+Password varchar(25),
+FullName varchar(255),
+IsActive bit,
+Category varchar(50),);
+
+CREATE TABLE ProductMaster
+(
+ProductId int primary key identity(1,1),
+ProductName varchar(50),
+AvailableQty bigint,);
+
+CREATE TABLE Transactions
+(
+TranscationId int primary key identity(1,1),
+TranscationDate Date,
+ProductId int references ProductMaster(ProductId),
+Qty int,
+updatedby int,);
+
+Alter table Transactions add foreign key(updatedby) references User1(UserId);
+ALTER TABLE Transactions ALTER COLUMN updatedby int not  null;
+ALTER TABLE Transactions Add TransactionType varchar(50);
+ALTER TABLE ProductMaster ALTER COLUMN ProductName varchar(50) not  null;
+ALTER TABLE ProductMaster ALTER COLUMN AvailableQty bigint not  null;
+ALTER TABLE Transactions ALTER COLUMN ProductId int not  null;
+ALTER TABLE ProductMaster ALTER COLUMN ProductName varchar(50);
+
+
+Insert into ProductMaster values('Tubelight',500);
+Insert into ProductMaster values('Switch',1000),('Screws',2000),('Nails',500);
+
+
+select * from ProductMaster;
+
+
+
+Insert into Users1(UserName,Password,FullName,IsActive) values ('Ishwarya','Aish@111','Aishwarya Potta',1);
+Insert into Users1(UserName,Password,FullName,IsActive) values ('Sathvika','Sath@111','Sathvika Panda',1);
+Insert into Users1(UserName,Password,FullName,IsActive) values ('Vivek','vivek@111','Vivek Vardhan',1);
+Insert into Users1(UserName,Password,FullName,IsActive) values ('Yakshu','yaksh@111','Yakshitha',0);
+Insert into Users1(UserName,Password,FullName,IsActive) values ('akansha','aka@111','naaka akansha',0);
+
+
+select * from Users1;
+
+Update Users1 set Category='Staff' where UserId=2;
+
+Update Users1 set Category='Staff' where UserId=4;
+
+
+Update Users1 set Category='Admin' where UserId=1;
+
+Update Users1 set Category='Admin' where UserId=3;
+
+select * from Users1;
+
+delete from Users1 where Userid in (4,5);
+
+drop table Transactions;
+
+CREATE TABLE [Transaction]
+(
+TransactionId int primary key identity(1,1),
+TransactionDate Date,
+ProductId int,
+constraint FK_productionID
+foreign key(ProductId) references ProductMaster(ProductId),
+TransactionType varchar(5),
+Qty int,
+updatedby int,);
+Alter table [Transaction] add foreign key(updatedby) references Users1(UserId);
+ALTER TABLE [Transaction] ALTER COLUMN updatedby int not  null;
+ALTER TABLE [Transaction] ALTER COLUMN ProductId int not  null;
+ALTER TABLE [Transaction] ALTER COLUMN TransactionType varchar(5) not  null;
+
+
+INSERT into [Transaction] ( TransactionDate,ProductId,TransactionType,Qty,updatedby) values('2023-09-11',1,'IN',121,1);
+INSERT into [Transaction] ( TransactionDate,ProductId,TransactionType,Qty,updatedby) values('2023-08-11',2,'IN',122,2);
+INSERT into [Transaction] ( TransactionDate,ProductId,TransactionType,Qty,updatedby) values('2023-09-11',3,'IN',123,3);
+INSERT into [Transaction] ( TransactionDate,ProductId,TransactionType,Qty,updatedby) values('2023-10-11',4,'OUT',124,4);
+
+SELECT * FROM [Transaction];
+
+Select FullName from Users1;
+
+Select Category from Users1;
+
+select ProductName from ProductMaster where AvailableQty<500;
+
+select * from ProductMaster where ProductName='Nails';
+
+
+select * from ProductMaster where AvailableQty between 1000 and 2000;
+
+
+
+select * from ProductMaster where AvailableQty not between 1000 and 2000;
+
+select TransactionType,TransactionDate from [Transaction];
+
+Select * from [Transaction] where TransactionType='IN';
+
+select * from [Transaction] where updatedby=1 and UserId=1;
+
+select UserId from Users1 where UserName='Ishwarya';
+select * from [Transaction] where updatedby=1;
