@@ -1,4 +1,4 @@
---1-write a query to display the member id,member name,city and membership status who are all having the life time membership.
+E--1-write a query to display the member id,member name,city and membership status who are all having the life time membership.
 
 select MEMBER_ID,MEMBER_NAME,CITY FROM LMS_MEMBERS WHERE MEMBERSHIP_STATUS='Permanent';
 
@@ -24,7 +24,8 @@ select COUNT(PUBLICATION) AS NO_OF_BOOKS FROM LMS_BOOK_DETAILS WHERE PUBLICATION
 
 --8-write a query to diplay the book code,book title of the books which are issued on the date of 1st april 2012.
 
-select BOOK_CODE FROM LMS_BOOK_ISSUE where DATE_ISSUE='2012-04-01';
+select BOOK_CODE,BOOK_TITLE FROM LMS_BOOK_DETAILS where BOOK_CODE IN(SELECT BOOK_CODE FROM LMS_BOOK_ISSUE
+WHERE DATE_ISSUE='2012-04-01');
 
 --9--write a query to display the memberid,member name,date register,expire date
 --of the members who registered before "apr 2013"
@@ -45,6 +46,10 @@ select MEMBER_ID,MEMBER_NAME AS Name FROM LMS_MEMBERS WHERE CITY='CHENNAI' OR CI
 --13-Write a query to display the average price of books which is belonging to 'JAVA' category with alias name 'AVERAGEPRICE'.
 
 select avg(PRICE) AS AVERAGEPRICE FROM LMS_BOOK_DETAILS WHERE CATEGORY='JAVA';
+
+--12-write a query to concatenate book title,author and display in the following format.BOOK_TITLE_is_written_by_AUTHOR.
+
+select CONCAT(BOOK_TITLE,'_IS_WRITTEN_BY_',AUTHOR) AS BOOK_WRITTEN_BY FROM LMS_BOOK_DETAILS;
 
 --14-write a query to display the supplier_id,supplier name and email of the suppliers who are all having gmail account.
 
