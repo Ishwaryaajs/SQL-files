@@ -54,3 +54,11 @@ select CONCAT(BOOK_TITLE,'_IS_WRITTEN_BY_',AUTHOR) AS BOOK_WRITTEN_BY FROM LMS_B
 --14-write a query to display the supplier_id,supplier name and email of the suppliers who are all having gmail account.
 
 select SUPPLIER_ID,SUPPLIER_NAME,EMAIL FROM LMS_SUPPLIERS_DETAILS WHERE EMAIL LIKE '%gmail.com';
+
+--16-write a query to display the supplier id,supplier name and contsact.if phone n umber is null then display 'no' 
+--else display 'yes' with alias name "PHONENUMBERAVAILABLE".
+
+select SUPPLIER_ID,SUPPLIER_NAME,CONTACT,
+CASE
+WHEN CONTACT IS NULL THEN 'NO'  ELSE 'YES' END AS 'PHONENUMAVAILABLE'
+FROM LMS_SUPPLIERS_DETAILS;
