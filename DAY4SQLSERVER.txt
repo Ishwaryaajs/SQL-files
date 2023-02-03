@@ -1,0 +1,140 @@
+USE [lms_db]
+select * from LMS_BOOK_DETAILS;
+
+select * from LMS_BOOK_ISSUE;
+SELECT * FROM LMS_BOOK_ISSUE;
+select * from LMS_FINE_DETAILS;
+
+select * from LMS_MEMBERS;
+select * from LMS_BOOK_DETAILS;
+
+select * from LMS_BOOK_ISSUE;
+select * from LMS_SUPPLIERS_DETAILS;
+select * from LMS_BOOK_DETAILS;
+
+-----------------------JOINS-------------------------------------
+--TO RETRIEVE THE DATA FROM TWO TABLES
+--JOINS ARE USED TO FETCH THE DATA/COLUMNS FROM ONE OR MORE TABLES.
+--JOIN KEYWORD COMES WITH ON CONDITION.
+
+--DISPLAY THE BOOK CODE,BOOK NAME/TITLE , SUPPLIER NAME OF THE BOOKS IN THE LIBRARY
+---------inner join---------
+select l1.BOOK_CODE,l1.BOOK_TITLE,l2.SUPPLIER_NAME FROM LMS_BOOK_DETAILS as l1 JOIN  LMS_SUPPLIERS_DETAILS as l2 
+ON L1.SUPPLIER_ID=
+L2.SUPPLIER_ID;
+
+--N tables will need N-1 joins
+
+--DISPLAY THE BOOK TITLE AND MEMBER ID WHO HAS TAKEN BOOK FROM THE LIBRARY
+
+SELECT DISTINCT BOOK_TITLE,MEMBER_ID FROM LMS_BOOK_DETAILS JOIN LMS_BOOK_ISSUE
+ON LMS_BOOK_DETAILS.BOOK_CODE = LMS_BOOK_ISSUE.BOOK_CODE;
+
+USE Employee_DB
+SELECT * FROM employee;
+SELECT * FROM department;
+SELECT * FROM location;
+
+--DISPLAY EMPLOYEE NAME,EMAIL AND DEPARTMENT NAME OF ALL THE EMPLOYESS
+
+SELECT first_name+','+last_name as employeename,email,name from employee join department on department_id=department.id;
+
+--display the bookname and member name who has taken book from the library.
+
+select BOOK_TITLE,MEMBER_NAME FROM LMS_BOOK_DETAILS AS L1 JOIN LMS_BOOK_ISSUE AS L2 ON  L1.BOOK_CODE =L2.BOOK_CODE JOIN LMS_;
+
+--display department name and number of employees in each department
+
+SELECT d.name,count(e.id) as noofemployees from department as d join employee as e on d.id = e.department_id group by d.name;
+
+-------------COUNT(*) INCLUDES THE ROWS WITH NULL VALUES BUT COUNT(ID) DOESNOT INCLUDE THE ROWS WITH NULL---------------------
+
+--DISPLAY THE supplier _id and no of books supplied by each supplier
+
+SELECT L2.SUPPLIER_ID,COUNT(L2.BOOK_CODE) AS NOOFBOOKSSUPPLIED FROM  LMS_BOOK_DETAILS AS L2  WHERE L2.SUPPLIER_ID IS NOT NULL
+GROUP BY L2.SUPPLIER_ID;
+
+--DISPLAY THE SUPPLIER NAME AND NO OF BOOKS SUPPLIED BY EACH SUPPLIER
+
+SELECT L2.SUPPLIER_NAME,COUNT(L1.BOOK_CODE) as Count FROM LMS_BOOK_DETAILS AS L1 join LMS_SUPPLIERS_DETAILS AS L2 
+ON L1.SUPPLIER_ID=L2.SUPPLIER_ID
+GROUP BY L2.SUPPLIER_NAME;
+
+---SELECT THE BOOK NAME AND MEMBER NAME WHO HAS TAKEN BOOK FROM THE LIBRARY
+
+SELECT L1.BOOK_TITLE,L3.MEMBER_NAME FROM LMS_BOOK_DETAILS AS L1 JOIN 
+LMS_BOOK_ISSUE AS L2  ON L1.BOOK_CODE=L2.BOOK_CODE JOIN LMS_MEMBERS AS L3
+ON L2.MEMBER_ID=L3.MEMBER_ID;
+
+--DISPLAY EMPLOYEE NAME,DEPARTMENT NAME AND THE STATE LOCATION
+
+select e.first_name,d.name,l.state from employee as e join department as d on department_id=d.id
+join location as l on location_id=l.id;
+
+--1-write a query to display the book_title,supplier name who has supplied books to library.
+select * from LMS_MEMBERS;
+SELECT * FROM LMS_BOOK_ISSUE;
+SELECT * FROM LMS_SUPPLIERS_DETAILS;
+select * from LMS_MEMBERS;
+select* from LMS_BOOK_DETAILS;
+
+SELECT DISTINCT L1.BOOK_TITLE,L2.SUPPLIER_NAME FROM LMS_BOOK_DETAILS AS L1 JOIN LMS_SUPPLIERS_DETAILS AS L2
+ON L1.SUPPLIER_ID=L2.SUPPLIER_ID; 
+
+--2-write a query to display member name and book code for the book he/she taken from the library.
+
+select DISTINCT L1.MEMBER_NAME,L3.BOOK_CODE FROM LMS_MEMBERS AS L1 JOIN LMS_BOOK_ISSUE AS L2 ON  L1.MEMBER_ID=L2.MEMBER_ID JOIN
+LMS_BOOK_DETAILS AS L3 ON  L2.BOOK_CODE = L3.BOOK_CODE;
+
+--3-write a query to display the book title and date when the book was taken from the library.
+
+select DISTINCT L1.BOOK_TITLE,L2.DATE_ISSUE FROM LMS_BOOK_DETAILS AS L1 JOIN LMS_BOOK_ISSUE AS L2 ON L1.BOOK_CODE=L2.BOOK_CODE; 
+
+--4-Write a query to display the member id and the fine amount paid by the member in the library.
+
+select DISTINCT L1.MEMBER_ID,L3.FINE_AMOUNT FROM LMS_MEMBERS AS L1 JOIN LMS_BOOK_ISSUE AS L2 ON L1.MEMBER_ID=L2.MEMBER_ID
+JOIN LMS_FINE_DETAILS AS L3 ON L2.FINE_RANGE=L3.FINE_RANGE;
+
+--5-Write a query to display the member name and the date returned AND DATE RETURN between two books.
+
+select L1.MEMBER_NAME,DATEDIFF(DAY,L2.DATE_RETURN,L2.DATE_RETURNED) AS DIFFERENCE  
+FROM LMS_MEMBERS AS L1 JOIN LMS_BOOK_ISSUE AS L2 
+ON L1.MEMBER_ID=L2.MEMBER_ID; 
+
+--6-write a query to display the book title,the member name who has taken the book from library.
+
+select DISTINCT L1.BOOK_TITLE,L3.MEMBER_NAME FROM LMS_BOOK_DETAILS AS L1 JOIN LMS_BOOK_ISSUE AS L2 ON L1.BOOK_CODE=L2.BOOK_CODE
+JOIN LMS_MEMBERS AS L3 ON L3.MEMBER_ID=L2.MEMBER_ID;
+
+--7-write a query to display the book title,member name,supplier name for the books taken from the library.
+
+select DISTINCT L1.BOOK_TITLE,L4.MEMBER_NAME,L2.SUPPLIER_NAME FROM LMS_BOOK_DETAILS AS L1 JOIN LMS_SUPPLIERS_DETAILS AS L2 
+ON L1.SUPPLIER_ID=L2.SUPPLIER_ID JOIN LMS_BOOK_ISSUE AS L3 ON L3.BOOK_CODE=L1.BOOK_CODE JOIN LMS_MEMBERS AS L4 ON L4.MEMBER_ID=L3.MEMBER_ID; 
+
+--8-write a query to display the book title and the difference fine amount paid for the book library.
+
+select* from LMS_BOOK_DETAILS;
+SELECT * FROM LMS_MEMBERS;
+SELECT * FROM LMS_FINE_DETAILS;
+SELECT * FROM LMS_BOOK_ISSUE;
+SELECT DISTINCT L1.BOOK_TITLE,L3.FINE_AMOUNT FROM LMS_BOOK_DETAILS AS L1 JOIN LMS_BOOK_ISSUE AS L2 ON L1.BOOK_CODE=L2.BOOK_CODE
+JOIN LMS_FINE_DETAILS AS L3 ON L2.FINE_RANGE=L3.FINE_RANGE;
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+--17-write a query to display member_id,member_name,city,member status of members with the total fine paid by them with alias name 'Fine'.
+
+select DISTINCT L1.MEMBER_ID,L1.MEMBER_NAME,L1.CITY,L1.MEMBERSHIP_STATUS,L3.FINE_AMOUNT AS 'Fine' FROM LMS_MEMBERS AS L1 
+JOIN LMS_BOOK_ISSUE AS L2 ON L1.MEMBER_ID=L2.MEMBER_ID JOIN LMS_FINE_DETAILS AS L3 ON L3.FINE_RANGE=L2.FINE_RANGE;
+
+--1-write a query to display the member_ID ,member name of the members,book code and book title of the books taken by them.
+
+SELECT L3.MEMBER_ID,L3.MEMBER_NAME,L1.BOOK_CODE,L1.BOOK_TITLE FROM LMS_BOOK_DETAILS AS L1 JOIN LMS_BOOK_ISSUE AS L2
+ON L1.BOOK_CODE=L2.BOOK_CODE 
+JOIN LMS_MEMBERS AS L3 ON L3.MEMBER_ID=L2.MEMBER_ID;
+
+--3-WRITE A QUERY TO DISPLAY THE MEMBER_ID,MEMBER_NAME,FINE_RANGE AND THE FINE_AMOUNT OF THE MEMBERS WHOSE FINE AMOUNT IS LESS THAN 100
+
+SELECT L1.MEMBER_ID,L1.MEMBER_NAME,L3.FINE_RANGE,L3.FINE_AMOUNT FROM LMS_MEMBERS AS L1 JOIN LMS_BOOK_ISSUE AS L2 ON L1.MEMBER_ID=L2.MEMBER_ID
+JOIN LMS_FINE_DETAILS AS L3 ON L3.FINE_RANGE=L2.FINE_RANGE WHERE FINE_AMOUNT<100;
+
