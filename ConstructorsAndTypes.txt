@@ -1,0 +1,119 @@
+          
+using System;
+
+namespace ClassesAndObjectsDemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Vehicle obj1 = new Vehicle();
+            Vehicle obj2 = new Vehicle("TN45Q1234", "Ram", "Micro", 12);
+            Console.WriteLine("Enter Vehicle Details");
+            Console.WriteLine("Enter Registration Number:");
+            obj1.RegistrationNumber = Console.ReadLine();
+            Console.WriteLine("Enter Driver Name:");
+            obj1.DriverName = Console.ReadLine();
+            Console.WriteLine("Enter Vehicle Type:");
+            obj1.VehicleType = Console.ReadLine();
+            Console.WriteLine("Enter Cost Per Km:");
+            obj1.CostPerKM = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("Cab Registration");
+
+            Console.WriteLine("Vehicle Details:");
+            obj1.Display();
+}
+}
+}
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
+namespace ClassesAndObjectsDemo
+{
+    internal class Vehicle
+    {
+        private string registrationNumber;
+        private string driverName;
+        private string vehicleType;
+        private float costPerKM;
+
+        public Vehicle()
+        {
+
+
+
+        }
+        public Vehicle(string _RegNo, string _Name, string _Type, float _Cost)
+        {
+            registrationNumber = _RegNo;
+            driverName = _Name;
+            vehicleType = _Type;
+            costPerKM = _Cost;
+        }
+
+        public string RegistrationNumber
+        {
+            get
+            {
+                return registrationNumber;
+            }
+            set
+            {
+                registrationNumber = value;
+            }
+        }
+        public string DriverName
+        {
+            get
+            {
+                return driverName;
+            }
+            set
+            {
+                driverName = value;
+            }
+        }
+        public string VehicleType
+        {
+            get
+            {
+                return vehicleType;
+            }
+            set
+            {
+                vehicleType = value;
+            }
+        }
+        public float CostPerKM
+        {
+            get
+            {
+                return costPerKM;
+            }
+            set
+            {
+                costPerKM = value;
+            }
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("Registration Number:" + RegistrationNumber);
+            Console.WriteLine("Driver Name:" + DriverName);
+            Console.WriteLine("Vehicle Type:" + VehicleType);
+            Console.WriteLine("Cost Per KM:" + CostPerKM);
+        }
+    }
+}
+
+
+
+
+
+
+        }
+    }
+}
