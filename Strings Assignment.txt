@@ -1,0 +1,70 @@
+using System;
+
+namespace Strings
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //problem 1(Convert string into lowercase)
+
+            Console.WriteLine("Enter the input string");
+            String str = Console.ReadLine();
+            String result = str.ToLower();
+            Console.WriteLine("The Output string is "+result);
+
+            //problem 2(Converting Text to Sms language)
+
+  
+                string str1 = Console.ReadLine();
+            string sp = str1.Replace("yes","s").Replace("you", "u").Replace("today", "2day").Replace("why", "y");
+            Console.WriteLine(sp);
+                
+                
+
+            //problem 3(String Api:split())
+            Console.WriteLine("Enter a String");
+            string str2 = Console.ReadLine();
+            string[] myStr = str2.Split(' ');
+            Console.WriteLine("The words in the string are");
+            foreach (string ch in myStr)
+            {
+                Console.WriteLine(ch);
+            }
+
+            //problem 4(string operations:length,uppercase,concat and compare)
+
+            string str3 = Console.ReadLine();
+            string str4 = Console.ReadLine();
+            Console.WriteLine("The Length of first string is" + str3.Length);
+            Console.WriteLine("The Length of second string is" + str4.Length);
+            Console.WriteLine("The UpperCase of first string is" + str3.ToUpper());
+            Console.WriteLine("The UpperCase of second string is" + str4.ToUpper());
+            Console.WriteLine("The Concatenated string is" +(str3+str4));
+            if(string.Compare(str3, str4)==0)
+            {
+                Console.WriteLine("both strings are same");
+            }
+            else if (string.Compare(str3, str4) == -1)
+            {
+                Console.WriteLine(str3+" appears before "+str4);
+            }
+            if (string.Compare(str3, str4) == 1)
+            {
+                Console.WriteLine(str3+" appears after "+str4);
+            }
+
+
+
+
+
+
+
+
+
+
+        }
+        }
+    
+    
+}
