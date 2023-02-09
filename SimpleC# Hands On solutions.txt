@@ -1,0 +1,66 @@
+using System;
+
+namespace Simple_C_Sharp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("welcome the alien to our planet EARTH.");
+            //problem 3
+            Console.WriteLine("Price of old scooter");
+            double price1 = double.Parse(Console.ReadLine());
+            Console.WriteLine("Repair Amount");
+            double repair = double.Parse(Console.ReadLine());
+            Console.WriteLine("Selling Price");
+            double SellingPrice = double.Parse(Console.ReadLine());
+            double cp = price1 + repair;
+            double gain = SellingPrice - cp;
+            double gainp = (gain * 100) / cp;
+            Console.WriteLine("Gain Percentage is" + gainp.ToString("#.##"));
+
+            // Sample Input and output 1:
+            // Enter your name:
+            //Naoto
+            // PROBLEM 1
+            dynamic d;
+            Console.WriteLine("enter your name");
+            d = Console.ReadLine();
+            Console.WriteLine("Hello " + d + "! Welcome to our planet Earth.");
+
+            //PROBLEM 2
+            dynamic clg;
+            dynamic loc;
+            dynamic visi;
+            dynamic missi;
+            int dept;
+            int stre;
+            dynamic rating;
+            Console.WriteLine("enter college name: ");
+            clg = Console.ReadLine();
+            Console.WriteLine("enter college locality: ");
+            loc = Console.ReadLine();
+            Console.WriteLine("enter college's vision: ");
+            visi = Console.ReadLine();
+            Console.WriteLine("enter college's mission: ");
+            missi = Console.ReadLine();
+            Console.WriteLine("enter number of departments: ");
+            dept = int.Parse(Console.ReadLine());
+            Console.WriteLine("enter Student Strength: ");
+            stre= int.Parse(Console.ReadLine());
+            Console.WriteLine("enter college rating: ");
+            rating = Console.ReadLine();
+
+            //PROBLEM 4
+
+            double c;
+            double res;
+            Console.WriteLine("Temperature in Celsius:");
+            c = double.Parse(Console.ReadLine());
+            res = ((c * 9) / 5) + 32;
+            Console.WriteLine("Temperature in Fahrenheit is :"+res+"F");
+            
+
+        }
+    }
+}
