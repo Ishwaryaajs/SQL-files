@@ -1,0 +1,165 @@
+using System;
+
+namespace ConditionalStatements
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter a Number:");
+            //PROBLEM 6 (FINDING ODD OR EVEN)
+            int num = int.Parse(Console.ReadLine());
+            if(num%2==0)
+            {
+                Console.WriteLine("Even Number");
+
+            }
+            else
+            {
+                Console.WriteLine("Odd Number");
+            }
+            Console.WriteLine("Enter a month:");
+            int month = int.Parse(Console.ReadLine());
+            switch (month)
+            {
+                case 1:
+                    Console.WriteLine("Jan");
+                    break;
+                case 2:
+                    Console.WriteLine("Feb");
+                    break;
+                case 3:
+                    Console.WriteLine("Mar");
+                    break;
+                default:
+                    Console.WriteLine("Not a Month");
+                    break;
+            }
+            // PROBLEM 1(CHECKING DIVISIBILITY BY 7 AND 3)
+
+            Console.WriteLine("Enter a Number:");
+            int d = int.Parse(Console.ReadLine());
+            if(d%3==0 && d%7==0)
+            {
+                Console.WriteLine(d + " is divisble by both 3 and 7");
+            }
+            else
+            {
+                Console.WriteLine(d + " is not divisble by 3 and 7");
+            }
+
+            //PROBLEM 2 (MAXIMUMOF THREE NUMBERS)
+            int a = int.Parse(Console.ReadLine());
+            int b = int.Parse(Console.ReadLine());
+            int c = int.Parse(Console.ReadLine());
+            if(a>b)
+            {
+                if(a>c)
+                {
+                    Console.WriteLine(a + " is maximum number");
+                }
+                else
+                {
+                    Console.WriteLine(c + " is maximum Number");
+                }
+            }
+            else
+            {
+                if(b>c)
+                {
+                    Console.WriteLine(b + " is maximum Number");
+                }
+                else
+                {
+                    Console.WriteLine(c + " is maximum Number");
+                }
+            }
+            //PROBLEM 3(FINDING LEAP YEAR)
+
+            int y = int.Parse(Console.ReadLine());
+            if((y%4==0 && y%100!=0) || (y%400==0))
+            {
+                Console.WriteLine(y + " is a leap year");
+            }
+            else
+            {
+                Console.WriteLine(y + " is not a leap year");
+            }
+
+            //PROBLEM 4(EARTHQUAKE INTENSITY DECISION)
+            double r = double.Parse(Console.ReadLine());
+            Console.WriteLine("Richter Magnitude:");
+            if(r<=2.4)
+            {
+                Console.WriteLine("Micro");
+            }
+            else if(r<=5.4)
+            {
+                Console.WriteLine("Light");
+            }
+            else if (r <= 6.0)
+            {
+                Console.WriteLine("Moderate");
+            }
+            else if (r <= 6.9)
+            {
+                Console.WriteLine("Strong");
+            }
+            else if (r <= 7.9)
+            {
+                Console.WriteLine("Major");
+            }
+            else if(r>=8.0)
+            {
+                Console.WriteLine("Great");
+            }
+            else
+            {
+                Console.WriteLine("please help ram to decide the intensity of earthquake");           
+            }
+            // PROBLEM 5(PALINDROME SIZE)
+            
+            Console.Write("Enter the Number: ");
+            string n= Console.ReadLine();
+            if (n.Length == 3)
+                if (n[0] == n[2])
+                    Console.WriteLine("Yes");
+                else
+                    Console.WriteLine("No");
+            else
+                Console.WriteLine("No");
+
+            //PROBLEM 7(GRADE CALCULATION)
+            int m = int.Parse(Console.ReadLine());
+            if (m < 50)
+                Console.WriteLine("F");
+            else if (m >= 50 && m < 60)
+                Console.WriteLine("E");
+            else if (m >= 60 && m < 70)
+                Console.WriteLine("D");
+            else if (m >= 70 && m < 80)
+                Console.WriteLine("C");
+            else if (m >= 80 && m < 90)
+                Console.WriteLine("B");
+            else if (m >= 90 && m < 100)
+                Console.WriteLine("A");
+            else if (m == 100)
+                Console.WriteLine("S");
+            else
+                Console.WriteLine("Invalid Input");
+
+            //PROBLEM 8(SORTED PRIZE)
+
+            string bi = Console.ReadLine();
+            if (bi.Length == 3)
+                if (bi[0] > bi[1] && bi[1] > bi[2])
+                    Console.WriteLine("Yes");
+                else if (bi[0] < bi[1] && bi[1] < bi[2])
+                    Console.WriteLine("Yes");
+                else
+                    Console.WriteLine("No");
+            else
+                Console.WriteLine("No");
+        }
+    }
+}
